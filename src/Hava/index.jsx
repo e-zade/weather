@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, TextField } from "@mui/material";
 import style from "./index.module.scss";
 import backgroundMusic from "/src/assets/music/background.mp3";
+import { Helmet } from "react-helmet";
 
 const api = {
   key: "91030e46de594fe89d367b7b9afcae1c",
@@ -63,46 +64,56 @@ const Hava = () => {
   };
 
   return (
-    <div
-      className={style.container}
-      style={{
-        backgroundImage: getBackground(weatherData?.main?.temp),
-        backgroundSize: "cover",
-      }}
-    >
-      <audio ref={audioRef} loop>
-        <source src={backgroundMusic} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-
-      <div className={style.searchContainer}>
-        <TextField
-          label="Enter your city"
-          variant="outlined"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+    <>
+      <Helmet>
+        <title>Weather</title>
+        <link
+          rel="icon"
+          href="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png"
+          type="x-icon"
         />
-        <Button
-          type="button"
-          onClick={searchReset}
-          variant="contained"
-          color="primary"
-        >
-          Search
-        </Button>
-      </div>
+      </Helmet>
+      <div
+        className={style.container}
+        style={{
+          backgroundImage: getBackground(weatherData?.main?.temp),
+          backgroundSize: "cover",
+        }}
+      >
+        <audio ref={audioRef} loop>
+          <source src={backgroundMusic} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
 
-      {loading && <p className={style.loading}>Loading...</p>}
-      {error && <p className={style.errorMessage}>{error}</p>}
-      {weatherData && (
-        <div className={style.weatherInfo}>
-          <h2>{weatherData.name}</h2>
-          <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Weather: {weatherData.weather[0].main}</p>
-          <p>Description: {weatherData.weather[0].description}</p>
+        <div className={style.searchContainer}>
+          <TextField
+            label="Enter your city"
+            variant="outlined"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Button
+            type="button"
+            onClick={searchReset}
+            variant="contained"
+            color="primary"
+          >
+            Search
+          </Button>
         </div>
-      )}
-    </div>
+
+        {loading && <p className={style.loading}>Loading...</p>}
+        {error && <p className={style.errorMessage}>{error}</p>}
+        {weatherData && (
+          <div className={style.weatherInfo}>
+            <h2>{weatherData.name}</h2>
+            <p>Temperature: {weatherData.main.temp}°C</p>
+            <p>Weather: {weatherData.weather[0].main}</p>
+            <p>Description: {weatherData.weather[0].description}</p>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
