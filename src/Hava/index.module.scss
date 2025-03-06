@@ -1,0 +1,143 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.5s ease;
+  padding: 20px;
+  height: 100vh;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 5px;
+  }
+}
+
+.searchContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  input {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    width: 250px;
+    transition: border-color 0.3s ease;
+
+    @media (max-width: 768px) {
+      width: 200px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      width: 150px;
+      padding: 8px;
+      font-size: 12px;
+    }
+
+    &:focus {
+      border-color: #3f51b5;
+      box-shadow: 0 0 8px rgba(63, 81, 181, 0.3);
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    @media (max-width: 768px) {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      background-color: #303f9f;
+    }
+  }
+}
+
+.weatherInfo {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    max-width: 250px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    max-width: 200px;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    color: #3f51b5;
+    font-size: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 18px;
+    }
+  }
+
+  p {
+    margin: 8px 0;
+    font-size: 18px;
+    color: #333;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
+  }
+}
+
+.errorMessage {
+  color: #ff6b6b;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+}
